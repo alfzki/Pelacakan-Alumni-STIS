@@ -28,7 +28,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    @Operation(summary = "Registrasi pengguna baru")
+    @Operation(summary = "Registrasi pengguna baru", security = {})
     public ResponseEntity<ApiResponse<AuthRegisterResponse>> register(@Valid @RequestBody AuthRegisterRequest request) {
         AuthRegisterResponse response = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -36,7 +36,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    @Operation(summary = "Masuk dan mendapatkan token JWT")
+    @Operation(summary = "Masuk dan mendapatkan token JWT", security = {})
     public ResponseEntity<ApiResponse<AuthLoginResponse>> login(@Valid @RequestBody AuthLoginRequest request) {
         AuthLoginResponse response = authService.login(request);
         return ResponseEntity.ok(ApiResponse.success("Login successful", response));

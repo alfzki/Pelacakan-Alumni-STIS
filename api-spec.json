@@ -1,0 +1,2222 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "API Pelacakan Alumni STIS",
+        "description": "REST API untuk mengelola profil alumni, riwayat pekerjaan, serta statistik terkait.",
+        "contact": {
+            "name": "Pelacakan Alumni STIS",
+            "email": "admin@stis.ac.id"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+        "/api/work-histories/{id}": {
+            "get": {
+                "tags": [
+                    "Riwayat Pekerjaan"
+                ],
+                "summary": "Menampilkan detail riwayat pekerjaan",
+                "operationId": "detail",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseWorkHistoryResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Riwayat Pekerjaan"
+                ],
+                "summary": "Memperbarui riwayat pekerjaan",
+                "operationId": "update",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WorkHistoryUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseWorkHistoryResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Riwayat Pekerjaan"
+                ],
+                "summary": "Menghapus riwayat pekerjaan",
+                "operationId": "delete",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseVoid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/users/profile": {
+            "get": {
+                "tags": [
+                    "Profil Pengguna"
+                ],
+                "summary": "Menampilkan profil pengguna yang sedang masuk",
+                "operationId": "getProfile",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseUserProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Profil Pengguna"
+                ],
+                "summary": "Memperbarui profil pengguna yang sedang masuk",
+                "operationId": "updateProfile",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseUserProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/users/change-password": {
+            "put": {
+                "tags": [
+                    "Profil Pengguna"
+                ],
+                "summary": "Mengganti kata sandi pengguna yang sedang masuk",
+                "operationId": "changePassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePasswordRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseVoid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/institutions/{id}": {
+            "get": {
+                "tags": [
+                    "Manajemen Institusi"
+                ],
+                "summary": "Menampilkan detail institusi",
+                "operationId": "detail_1",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseInstitutionDetailResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Manajemen Institusi"
+                ],
+                "summary": "Memperbarui institusi",
+                "operationId": "update_1",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InstitutionUpdateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseInstitutionResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Manajemen Institusi"
+                ],
+                "summary": "Menghapus institusi",
+                "operationId": "delete_1",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseVoid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/work-histories": {
+            "get": {
+                "tags": [
+                    "Riwayat Pekerjaan"
+                ],
+                "summary": "Menampilkan daftar riwayat pekerjaan pengguna",
+                "operationId": "list",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListWorkHistoryResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Riwayat Pekerjaan"
+                ],
+                "summary": "Menambahkan riwayat pekerjaan baru",
+                "operationId": "create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WorkHistoryRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseWorkHistoryResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/institutions": {
+            "get": {
+                "tags": [
+                    "Manajemen Institusi"
+                ],
+                "summary": "Menampilkan daftar institusi",
+                "operationId": "list_1",
+                "parameters": [
+                    {
+                        "name": "arg0",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "arg1",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 10
+                        }
+                    },
+                    {
+                        "name": "arg2",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "name"
+                        }
+                    },
+                    {
+                        "name": "arg3",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "asc"
+                        }
+                    },
+                    {
+                        "name": "arg4",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arg5",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arg6",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arg7",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponsePageResponseInstitutionListItemResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Manajemen Institusi"
+                ],
+                "summary": "Menambahkan institusi baru",
+                "operationId": "create_1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InstitutionRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseInstitutionResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Autentikasi"
+                ],
+                "summary": "Registrasi pengguna baru",
+                "operationId": "register",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthRegisterRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseAuthRegisterResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Autentikasi"
+                ],
+                "summary": "Masuk dan mendapatkan token JWT",
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthLoginRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseAuthLoginResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/statistics/overview": {
+            "get": {
+                "tags": [
+                    "Statistik"
+                ],
+                "summary": "Mengambil ringkasan statistik",
+                "operationId": "overview",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseStatisticsOverviewResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/statistics/alumni-distribution": {
+            "get": {
+                "tags": [
+                    "Statistik"
+                ],
+                "summary": "Mengambil distribusi alumni berdasarkan provinsi, institusi, atau tipe",
+                "operationId": "alumniDistribution",
+                "parameters": [
+                    {
+                        "name": "arg0",
+                        "in": "query",
+                        "description": "Parameter pengelompokan",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "province",
+                                "institution",
+                                "type"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListStatisticItemResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/institutions/options": {
+            "get": {
+                "tags": [
+                    "Manajemen Institusi"
+                ],
+                "summary": "Menampilkan opsi institusi untuk dropdown",
+                "operationId": "options",
+                "parameters": [
+                    {
+                        "name": "arg0",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListOptionResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/working-status": {
+            "get": {
+                "tags": [
+                    "Dasbor"
+                ],
+                "summary": "Mengambil distribusi status bekerja",
+                "operationId": "workingStatus",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListStatisticItemResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/top-locations": {
+            "get": {
+                "tags": [
+                    "Dasbor"
+                ],
+                "summary": "Mengambil lokasi dengan alumni terbanyak",
+                "operationId": "topLocations",
+                "parameters": [
+                    {
+                        "name": "arg0",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 5
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListTopLocationResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/top-institutions": {
+            "get": {
+                "tags": [
+                    "Dasbor"
+                ],
+                "summary": "Mengambil daftar institusi dengan alumni terbanyak",
+                "operationId": "topInstitutions",
+                "parameters": [
+                    {
+                        "name": "arg0",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 5
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListTopInstitutionResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/summary": {
+            "get": {
+                "tags": [
+                    "Dasbor"
+                ],
+                "summary": "Mengambil ringkasan metrik dasbor",
+                "operationId": "summary",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseDashboardSummaryResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/institution-type-distribution": {
+            "get": {
+                "tags": [
+                    "Dasbor"
+                ],
+                "summary": "Mengambil distribusi tipe institusi",
+                "operationId": "institutionTypeDistribution",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListStatisticItemResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/employment-distribution": {
+            "get": {
+                "tags": [
+                    "Dasbor"
+                ],
+                "summary": "Mengambil distribusi jenis pekerjaan",
+                "operationId": "employmentDistribution",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListStatisticItemResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/dashboard/angkatan-distribution": {
+            "get": {
+                "tags": [
+                    "Dasbor"
+                ],
+                "summary": "Mengambil distribusi berdasarkan angkatan",
+                "operationId": "angkatanDistribution",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseListStatisticItemResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/alumni": {
+            "get": {
+                "tags": [
+                    "Manajemen Alumni"
+                ],
+                "summary": "Menampilkan daftar alumni dengan filter dan paginasi",
+                "operationId": "getAlumni",
+                "parameters": [
+                    {
+                        "name": "arg0",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "arg1",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 10
+                        }
+                    },
+                    {
+                        "name": "arg2",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "fullName"
+                        }
+                    },
+                    {
+                        "name": "arg3",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "asc"
+                        }
+                    },
+                    {
+                        "name": "arg4",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "arg5",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arg6",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "arg7",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arg8",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arg9",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponsePageResponseUserListItemResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/alumni/{id}": {
+            "get": {
+                "tags": [
+                    "Manajemen Alumni"
+                ],
+                "summary": "Menampilkan detail alumni berdasarkan ID",
+                "operationId": "getAlumniDetail",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseUserProfileResponse"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/users/account": {
+            "delete": {
+                "tags": [
+                    "Profil Pengguna"
+                ],
+                "summary": "Menonaktifkan akun pengguna yang sedang masuk",
+                "operationId": "deleteAccount",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AccountDeletionRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponseVoid"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "WorkHistoryUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "institutionId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "position": {
+                        "type": "string"
+                    },
+                    "employmentType": {
+                        "type": "string",
+                        "enum": [
+                            "ASN",
+                            "PPPK",
+                            "SWASTA",
+                            "HONORER"
+                        ]
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "isCurrentJob": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ApiResponseWorkHistoryResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/WorkHistoryResponse"
+                    }
+                }
+            },
+            "InstitutionSimpleResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "BPS_KOTA_KABUPATEN",
+                            "BPS_PROVINSI",
+                            "BPS_PUSAT",
+                            "PEMERINTAH_DAERAH",
+                            "KEMENTERIAN",
+                            "LEMBAGA_NEGARA",
+                            "SKPD",
+                            "INSTITUSI_PEMERINTAH_LAIN",
+                            "SWASTA"
+                        ]
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    }
+                }
+            },
+            "WorkHistoryResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "institution": {
+                        "$ref": "#/components/schemas/InstitutionSimpleResponse"
+                    },
+                    "position": {
+                        "type": "string"
+                    },
+                    "employmentType": {
+                        "type": "string",
+                        "enum": [
+                            "ASN",
+                            "PPPK",
+                            "SWASTA",
+                            "HONORER"
+                        ]
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "isCurrentJob": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "UserUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "fullName": {
+                        "maxLength": 150,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "programStudi": {
+                        "pattern": "(?i)^(D1|D3|D4)$",
+                        "type": "string"
+                    },
+                    "tahunLulus": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "phoneNumber": {
+                        "maxLength": 30,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "alamat": {
+                        "maxLength": 255,
+                        "minLength": 0,
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiResponseUserProfileResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/UserProfileResponse"
+                    }
+                }
+            },
+            "UserProfileResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "nim": {
+                        "type": "string"
+                    },
+                    "angkatan": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "programStudi": {
+                        "type": "string"
+                    },
+                    "tahunLulus": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "phoneNumber": {
+                        "type": "string"
+                    },
+                    "alamat": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ACTIVE",
+                            "INACTIVE"
+                        ]
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "ADMIN"
+                        ]
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "workHistories": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WorkHistoryResponse"
+                        }
+                    }
+                }
+            },
+            "ChangePasswordRequest": {
+                "required": [
+                    "confirmNewPassword",
+                    "newPassword",
+                    "oldPassword"
+                ],
+                "type": "object",
+                "properties": {
+                    "oldPassword": {
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "maxLength": 100,
+                        "minLength": 8,
+                        "type": "string"
+                    },
+                    "confirmNewPassword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiResponseVoid": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    }
+                }
+            },
+            "InstitutionUpdateRequest": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "BPS_KOTA_KABUPATEN",
+                            "BPS_PROVINSI",
+                            "BPS_PUSAT",
+                            "PEMERINTAH_DAERAH",
+                            "KEMENTERIAN",
+                            "LEMBAGA_NEGARA",
+                            "SKPD",
+                            "INSTITUSI_PEMERINTAH_LAIN",
+                            "SWASTA"
+                        ]
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiResponseInstitutionResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/InstitutionResponse"
+                    }
+                }
+            },
+            "InstitutionResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "BPS_KOTA_KABUPATEN",
+                            "BPS_PROVINSI",
+                            "BPS_PUSAT",
+                            "PEMERINTAH_DAERAH",
+                            "KEMENTERIAN",
+                            "LEMBAGA_NEGARA",
+                            "SKPD",
+                            "INSTITUSI_PEMERINTAH_LAIN",
+                            "SWASTA"
+                        ]
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "WorkHistoryRequest": {
+                "required": [
+                    "employmentType",
+                    "institutionId",
+                    "position",
+                    "startDate"
+                ],
+                "type": "object",
+                "properties": {
+                    "institutionId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "position": {
+                        "maxLength": 150,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "employmentType": {
+                        "type": "string",
+                        "enum": [
+                            "ASN",
+                            "PPPK",
+                            "SWASTA",
+                            "HONORER"
+                        ]
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "description": {
+                        "maxLength": 500,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "isCurrentJob": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "InstitutionRequest": {
+                "required": [
+                    "name",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "maxLength": 150,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "BPS_KOTA_KABUPATEN",
+                            "BPS_PROVINSI",
+                            "BPS_PUSAT",
+                            "PEMERINTAH_DAERAH",
+                            "KEMENTERIAN",
+                            "LEMBAGA_NEGARA",
+                            "SKPD",
+                            "INSTITUSI_PEMERINTAH_LAIN",
+                            "SWASTA"
+                        ]
+                    },
+                    "province": {
+                        "maxLength": 100,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "city": {
+                        "maxLength": 100,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "address": {
+                        "maxLength": 255,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "description": {
+                        "maxLength": 500,
+                        "minLength": 0,
+                        "type": "string"
+                    }
+                }
+            },
+            "AuthRegisterRequest": {
+                "required": [
+                    "angkatan",
+                    "confirmPassword",
+                    "email",
+                    "fullName",
+                    "nim",
+                    "password",
+                    "programStudi",
+                    "tahunLulus",
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "maxLength": 50,
+                        "minLength": 4,
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "maxLength": 100,
+                        "minLength": 8,
+                        "type": "string"
+                    },
+                    "confirmPassword": {
+                        "maxLength": 100,
+                        "minLength": 8,
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "maxLength": 150,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "nim": {
+                        "maxLength": 20,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "angkatan": {
+                        "maximum": 67,
+                        "minimum": 1,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "programStudi": {
+                        "pattern": "(?i)^(D1|D3|D4)$",
+                        "type": "string"
+                    },
+                    "tahunLulus": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "phoneNumber": {
+                        "maxLength": 30,
+                        "minLength": 0,
+                        "type": "string"
+                    },
+                    "alamat": {
+                        "maxLength": 255,
+                        "minLength": 0,
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiResponseAuthRegisterResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/AuthRegisterResponse"
+                    }
+                }
+            },
+            "AuthRegisterResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "nim": {
+                        "type": "string"
+                    },
+                    "angkatan": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "programStudi": {
+                        "type": "string"
+                    },
+                    "tahunLulus": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "AuthLoginRequest": {
+                "required": [
+                    "password",
+                    "username"
+                ],
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiResponseAuthLoginResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/AuthLoginResponse"
+                    }
+                }
+            },
+            "AuthLoginResponse": {
+                "type": "object",
+                "properties": {
+                    "accessToken": {
+                        "type": "string"
+                    },
+                    "tokenType": {
+                        "type": "string"
+                    },
+                    "expiresIn": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "user": {
+                        "$ref": "#/components/schemas/UserSummaryResponse"
+                    }
+                }
+            },
+            "UserSummaryResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "ADMIN"
+                        ]
+                    }
+                }
+            },
+            "ApiResponseListWorkHistoryResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WorkHistoryResponse"
+                        }
+                    }
+                }
+            },
+            "ApiResponseStatisticsOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/StatisticsOverviewResponse"
+                    }
+                }
+            },
+            "StatisticsOverviewResponse": {
+                "type": "object",
+                "properties": {
+                    "totalAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalInstitutions": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "byInstitutionType": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "byAngkatan": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    "byEmploymentType": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "ApiResponseListStatisticItemResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StatisticItemResponse"
+                        }
+                    }
+                }
+            },
+            "StatisticItemResponse": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "percentage": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            },
+            "ApiResponsePageResponseInstitutionListItemResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageResponseInstitutionListItemResponse"
+                    }
+                }
+            },
+            "InstitutionListItemResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "BPS_KOTA_KABUPATEN",
+                            "BPS_PROVINSI",
+                            "BPS_PUSAT",
+                            "PEMERINTAH_DAERAH",
+                            "KEMENTERIAN",
+                            "LEMBAGA_NEGARA",
+                            "SKPD",
+                            "INSTITUSI_PEMERINTAH_LAIN",
+                            "SWASTA"
+                        ]
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "workingAlumniCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "PageResponseInstitutionListItemResponse": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/InstitutionListItemResponse"
+                        }
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ApiResponseInstitutionDetailResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/InstitutionDetailResponse"
+                    }
+                }
+            },
+            "InstitutionDetailResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "BPS_KOTA_KABUPATEN",
+                            "BPS_PROVINSI",
+                            "BPS_PUSAT",
+                            "PEMERINTAH_DAERAH",
+                            "KEMENTERIAN",
+                            "LEMBAGA_NEGARA",
+                            "SKPD",
+                            "INSTITUSI_PEMERINTAH_LAIN",
+                            "SWASTA"
+                        ]
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "alumniCount": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "currentEmployees": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/InstitutionEmployeeResponse"
+                        }
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "InstitutionEmployeeResponse": {
+                "type": "object",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "position": {
+                        "type": "string"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "format": "date"
+                    }
+                }
+            },
+            "ApiResponseListOptionResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OptionResponse"
+                        }
+                    }
+                }
+            },
+            "OptionResponse": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ApiResponseListTopLocationResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TopLocationResponse"
+                        }
+                    }
+                }
+            },
+            "TopLocationResponse": {
+                "type": "object",
+                "properties": {
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "totalAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "ApiResponseListTopInstitutionResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TopInstitutionResponse"
+                        }
+                    }
+                }
+            },
+            "TopInstitutionResponse": {
+                "type": "object",
+                "properties": {
+                    "institutionId": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "institutionName": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "BPS_KOTA_KABUPATEN",
+                            "BPS_PROVINSI",
+                            "BPS_PUSAT",
+                            "PEMERINTAH_DAERAH",
+                            "KEMENTERIAN",
+                            "LEMBAGA_NEGARA",
+                            "SKPD",
+                            "INSTITUSI_PEMERINTAH_LAIN",
+                            "SWASTA"
+                        ]
+                    },
+                    "province": {
+                        "type": "string"
+                    },
+                    "city": {
+                        "type": "string"
+                    },
+                    "totalAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "ApiResponseDashboardSummaryResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/DashboardSummaryResponse"
+                    }
+                }
+            },
+            "DashboardSummaryResponse": {
+                "type": "object",
+                "properties": {
+                    "totalAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "activeAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "inactiveAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "workingAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "nonWorkingAlumni": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalInstitutions": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "ApiResponsePageResponseUserListItemResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageResponseUserListItemResponse"
+                    }
+                }
+            },
+            "PageResponseUserListItemResponse": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UserListItemResponse"
+                        }
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "last": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "UserListItemResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "nim": {
+                        "type": "string"
+                    },
+                    "angkatan": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ACTIVE",
+                            "INACTIVE"
+                        ]
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": [
+                            "USER",
+                            "ADMIN"
+                        ]
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "AccountDeletionRequest": {
+                "required": [
+                    "confirmation",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "password": {
+                        "type": "string"
+                    },
+                    "confirmation": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
