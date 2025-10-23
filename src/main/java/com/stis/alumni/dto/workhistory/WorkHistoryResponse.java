@@ -1,5 +1,6 @@
 package com.stis.alumni.dto.workhistory;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stis.alumni.dto.institution.InstitutionSimpleResponse;
 import com.stis.alumni.enums.EmploymentType;
 
@@ -14,6 +15,7 @@ public class WorkHistoryResponse {
     private EmploymentType employmentType;
     private LocalDate startDate;
     private LocalDate endDate;
+    @JsonProperty("isCurrentJob")
     private boolean currentJob;
     private String description;
     private Instant createdAt;
@@ -70,10 +72,12 @@ public class WorkHistoryResponse {
         this.endDate = endDate;
     }
 
+    @JsonProperty("isCurrentJob")
     public boolean isCurrentJob() {
         return currentJob;
     }
 
+    @JsonProperty("isCurrentJob")
     public void setCurrentJob(boolean currentJob) {
         this.currentJob = currentJob;
     }

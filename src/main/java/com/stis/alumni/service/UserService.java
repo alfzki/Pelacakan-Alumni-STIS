@@ -48,7 +48,7 @@ public class UserService {
             throw new BadRequestException("New password confirmation does not match");
         }
         User user = getCurrentUser();
-        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
+        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
             throw new BadRequestException("Old password is incorrect");
         }
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));

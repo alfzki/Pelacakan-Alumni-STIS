@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 public class ChangePasswordRequest {
 
     @NotBlank
-    private String currentPassword;
+    private String oldPassword;
 
     @NotBlank
     @Size(min = 8, max = 100)
@@ -18,12 +18,12 @@ public class ChangePasswordRequest {
     public ChangePasswordRequest() {
     }
 
-    public String getCurrentPassword() {
-        return currentPassword;
+    public String getOldPassword() {
+        return oldPassword;
     }
 
-    public void setCurrentPassword(String currentPassword) {
-        this.currentPassword = currentPassword;
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
     public String getNewPassword() {

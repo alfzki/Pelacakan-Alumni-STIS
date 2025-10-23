@@ -1,5 +1,6 @@
 package com.stis.alumni.dto.workhistory;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.stis.alumni.enums.EmploymentType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,6 +25,7 @@ public class WorkHistoryRequest {
 
     private LocalDate endDate;
 
+    @JsonProperty("isCurrentJob")
     private boolean currentJob;
 
     @Size(max = 500)
@@ -72,10 +74,12 @@ public class WorkHistoryRequest {
         this.endDate = endDate;
     }
 
+    @JsonProperty("isCurrentJob")
     public boolean isCurrentJob() {
         return currentJob;
     }
 
+    @JsonProperty("isCurrentJob")
     public void setCurrentJob(boolean currentJob) {
         this.currentJob = currentJob;
     }
