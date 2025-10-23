@@ -1,0 +1,30 @@
+# Build output
+/target/
+/out/
+
+# IDE folders
+.idea/
+.vscode/
+*.iml
+
+# Eclipse artifacts
+.project
+.classpath
+.settings/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs and runtime
+*.log
+spring.log
+hs_err_pid*
+replay_pid*
+
+# Environment files
+.env
+*.env
+
+# Maven wrapper binary
+/.mvn/wrapper/maven-wrapper.jar
