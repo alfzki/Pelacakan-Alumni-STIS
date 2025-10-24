@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.isEmptyString;
 import static org.hamcrest.Matchers.not;
 
 class AuthTests extends BaseIntegrationTest {
@@ -48,7 +48,7 @@ class AuthTests extends BaseIntegrationTest {
                 .then()
                 .statusCode(200)
                 .body("status", equalTo("success"))
-                .body("data.accessToken", not(isEmptyString()));
+                .body("data.accessToken", not(emptyString()));
     }
 
     @Test

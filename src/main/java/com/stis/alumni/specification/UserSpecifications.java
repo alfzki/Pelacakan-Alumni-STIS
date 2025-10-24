@@ -55,7 +55,9 @@ public final class UserSpecifications {
                 predicates.add(cb.equal(root.get("role"), criteria.getRole()));
             }
 
-            query.distinct(true);
+            if (query != null) {
+                query.distinct(true);
+            }
             return cb.and(predicates.toArray(new Predicate[0]));
         };
     }

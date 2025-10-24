@@ -42,7 +42,9 @@ public final class InstitutionSpecifications {
                 predicates.add(cb.equal(cb.lower(root.get("city")), criteria.getCity().toLowerCase()));
             }
 
-            query.distinct(true);
+            if (query != null) {
+                query.distinct(true);
+            }
             return cb.and(predicates.toArray(new Predicate[0]));
         };
     }

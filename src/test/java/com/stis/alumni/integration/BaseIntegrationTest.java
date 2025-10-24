@@ -13,6 +13,7 @@ import com.stis.alumni.repository.WorkHistoryRepository;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
@@ -48,6 +49,13 @@ public abstract class BaseIntegrationTest {
 
     static {
         database.start();
+    }
+
+    @AfterAll
+    void stopDatabase() {
+        if (database.isRunning()) {
+            database.stop();
+        }
     }
 
     @DynamicPropertySource

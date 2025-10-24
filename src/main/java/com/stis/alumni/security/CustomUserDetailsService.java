@@ -1,7 +1,6 @@
 package com.stis.alumni.security;
 
 import com.stis.alumni.entity.User;
-import com.stis.alumni.exception.ResourceNotFoundException;
 import com.stis.alumni.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

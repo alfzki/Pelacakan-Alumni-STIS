@@ -41,19 +41,23 @@ public final class WorkHistorySpecifications {
             }
 
             Join<WorkHistory, Institution> institutionJoin = null;
-            if (StringUtils.hasText(criteria.getProvince()) || StringUtils.hasText(criteria.getCity())) {
-                institutionJoin = root.join("institution", JoinType.LEFT);
-            }
-
             if (StringUtils.hasText(criteria.getProvince())) {
+                if (institutionJoin == null) {
+                    institutionJoin = root.join("institution", JoinType.LEFT);
+                }
                 predicates.add(cb.equal(cb.lower(institutionJoin.get("province")), criteria.getProvince().toLowerCase()));
             }
 
             if (StringUtils.hasText(criteria.getCity())) {
+                if (institutionJoin == null) {
+                    institutionJoin = root.join("institution", JoinType.LEFT);
+                }
                 predicates.add(cb.equal(cb.lower(institutionJoin.get("city")), criteria.getCity().toLowerCase()));
             }
 
-            query.distinct(true);
+            if (query != null) {
+                query.distinct(true);
+            }
             return cb.and(predicates.toArray(new Predicate[0]));
         };
     }
