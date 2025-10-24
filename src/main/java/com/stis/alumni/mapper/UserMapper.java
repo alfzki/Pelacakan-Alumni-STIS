@@ -27,6 +27,7 @@ public final class UserMapper {
         user.setNim(normalizeTrimmed(request.getNim()));
         user.setAngkatan(request.getAngkatan());
         user.setProgramStudi(normalizeProgramStudi(request.getProgramStudi()));
+        user.setJurusan(normalizeJurusan(request.getJurusan()));
         user.setTahunLulus(request.getTahunLulus());
         user.setPhoneNumber(request.getPhoneNumber());
         user.setAlamat(request.getAlamat());
@@ -41,6 +42,9 @@ public final class UserMapper {
         }
         if (request.getProgramStudi() != null) {
             user.setProgramStudi(normalizeProgramStudi(request.getProgramStudi()));
+        }
+        if (request.getJurusan() != null) {
+            user.setJurusan(normalizeJurusan(request.getJurusan()));
         }
         if (request.getTahunLulus() != null) {
             user.setTahunLulus(request.getTahunLulus());
@@ -78,6 +82,7 @@ public final class UserMapper {
         response.setNim(user.getNim());
         response.setAngkatan(user.getAngkatan());
         response.setProgramStudi(user.getProgramStudi());
+        response.setJurusan(user.getJurusan());
         response.setTahunLulus(user.getTahunLulus());
         response.setPhoneNumber(user.getPhoneNumber());
         response.setAlamat(user.getAlamat());
@@ -100,6 +105,7 @@ public final class UserMapper {
         response.setNim(user.getNim());
         response.setAngkatan(user.getAngkatan());
         response.setProgramStudi(user.getProgramStudi());
+        response.setJurusan(user.getJurusan());
         response.setTahunLulus(user.getTahunLulus());
         response.setCreatedAt(user.getCreatedAt());
         return response;
@@ -117,6 +123,7 @@ public final class UserMapper {
         response.setNim(user.getNim());
         response.setAngkatan(user.getAngkatan());
         response.setProgramStudi(user.getProgramStudi());
+        response.setJurusan(user.getJurusan());
         response.setTahunLulus(user.getTahunLulus());
         response.setPhoneNumber(user.getPhoneNumber());
         response.setAlamat(user.getAlamat());
@@ -139,6 +146,8 @@ public final class UserMapper {
         response.setFullName(user.getFullName());
         response.setNim(user.getNim());
         response.setAngkatan(user.getAngkatan());
+        response.setProgramStudi(user.getProgramStudi());
+        response.setJurusan(user.getJurusan());
         response.setStatus(user.getStatus());
         response.setRole(user.getRole());
         response.setCreatedAt(user.getCreatedAt());
@@ -155,6 +164,19 @@ public final class UserMapper {
 
     private static String normalizeProgramStudi(String value) {
         return value == null ? null : value.trim().toUpperCase();
+    }
+
+    private static String normalizeJurusan(String value) {
+        if (value == null) {
+            return null;
+        }
+        String normalized = value.trim().toLowerCase();
+        return switch (normalized) {
+            case "d4 komputasi statistik" -> "D4 komputasi statistik";
+            case "d4 statistik" -> "D4 statistik";
+            case "d3 statistik" -> "D3 statistik";
+            default -> value.trim();
+        };
     }
 
     private static String normalizeTrimmed(String value) {

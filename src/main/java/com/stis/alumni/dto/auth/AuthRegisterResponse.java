@@ -11,6 +11,7 @@ public class AuthRegisterResponse {
     private String nim;
     private Integer angkatan;
     private String programStudi;
+    private String jurusan;
     private Integer tahunLulus;
     private Instant createdAt;
 
@@ -71,6 +72,14 @@ public class AuthRegisterResponse {
 
     public void setProgramStudi(String programStudi) {
         this.programStudi = programStudi;
+    }
+
+    public String getJurusan() {
+        return jurusan;
+    }
+
+    public void setJurusan(String jurusan) {
+        this.jurusan = jurusan;
     }
 
     public Integer getTahunLulus() {

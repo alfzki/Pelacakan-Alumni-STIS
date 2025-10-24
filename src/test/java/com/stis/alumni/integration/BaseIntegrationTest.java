@@ -131,6 +131,7 @@ public abstract class BaseIntegrationTest {
         user.setNim(nim);
         user.setAngkatan(62);
         user.setProgramStudi("D4");
+        user.setJurusan("D4 statistik");
         user.setTahunLulus(2024);
         user.setPhoneNumber("081234567890");
         user.setAlamat("Test Address");

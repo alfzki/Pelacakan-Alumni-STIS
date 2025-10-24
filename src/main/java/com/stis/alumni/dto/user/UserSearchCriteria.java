@@ -8,6 +8,7 @@ public class UserSearchCriteria {
     private String search;
     private Integer angkatan;
     private String programStudi;
+    private String jurusan;
     private Integer tahunLulus;
     private UserStatus status;
     private UserRole role;
@@ -37,6 +38,14 @@ public class UserSearchCriteria {
 
     public void setProgramStudi(String programStudi) {
         this.programStudi = programStudi;
+    }
+
+    public String getJurusan() {
+        return jurusan;
+    }
+
+    public void setJurusan(String jurusan) {
+        this.jurusan = jurusan;
     }
 
     public Integer getTahunLulus() {

@@ -16,6 +16,7 @@ public class UserProfileResponse {
     private String nim;
     private Integer angkatan;
     private String programStudi;
+    private String jurusan;
     private Integer tahunLulus;
     private String phoneNumber;
     private String alamat;
@@ -82,6 +83,14 @@ public class UserProfileResponse {
 
     public void setProgramStudi(String programStudi) {
         this.programStudi = programStudi;
+    }
+
+    public String getJurusan() {
+        return jurusan;
+    }
+
+    public void setJurusan(String jurusan) {
+        this.jurusan = jurusan;
     }
 
     public Integer getTahunLulus() {

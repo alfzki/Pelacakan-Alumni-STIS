@@ -42,6 +42,7 @@ public class AlumniController {
             @RequestParam(defaultValue = "asc") String sortDirection,
             @RequestParam(required = false) Integer angkatan,
             @RequestParam(required = false) String programStudi,
+            @RequestParam(required = false) String jurusan,
             @RequestParam(required = false) Integer tahunLulus,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) String role,
@@ -50,6 +51,7 @@ public class AlumniController {
         UserSearchCriteria criteria = new UserSearchCriteria();
         criteria.setAngkatan(angkatan);
         criteria.setProgramStudi(programStudi);
+        criteria.setJurusan(jurusan);
         criteria.setTahunLulus(tahunLulus);
         criteria.setSearch(search);
         if (StringUtils.hasText(status)) {

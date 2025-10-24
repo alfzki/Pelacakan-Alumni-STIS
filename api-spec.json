@@ -1,11 +1,11 @@
 {
-    "openapi": "3.0.1",
+    "openapi": "3.1.0",
     "info": {
         "title": "API Pelacakan Alumni STIS",
         "description": "REST API untuk mengelola profil alumni, riwayat pekerjaan, serta statistik terkait.",
         "contact": {
             "name": "Pelacakan Alumni STIS",
-            "email": "admin@stis.ac.id"
+            "email": "222312958@stis.ac.id"
         },
         "version": "1.0.0"
     },
@@ -28,7 +28,17 @@
                 ],
                 "summary": "Menampilkan detail riwayat pekerjaan",
                 "operationId": "detail",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -53,7 +63,17 @@
                 ],
                 "summary": "Memperbarui riwayat pekerjaan",
                 "operationId": "update",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -88,7 +108,17 @@
                 ],
                 "summary": "Menghapus riwayat pekerjaan",
                 "operationId": "delete",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -211,7 +241,17 @@
                 ],
                 "summary": "Menampilkan detail institusi",
                 "operationId": "detail_1",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -236,7 +276,17 @@
                 ],
                 "summary": "Memperbarui institusi",
                 "operationId": "update_1",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -271,7 +321,17 @@
                 ],
                 "summary": "Menghapus institusi",
                 "operationId": "delete_1",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -360,7 +420,7 @@
                 "operationId": "list_1",
                 "parameters": [
                     {
-                        "name": "arg0",
+                        "name": "page",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -370,7 +430,7 @@
                         }
                     },
                     {
-                        "name": "arg1",
+                        "name": "size",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -380,7 +440,7 @@
                         }
                     },
                     {
-                        "name": "arg2",
+                        "name": "sortBy",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -389,7 +449,7 @@
                         }
                     },
                     {
-                        "name": "arg3",
+                        "name": "sortDirection",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -398,7 +458,7 @@
                         }
                     },
                     {
-                        "name": "arg4",
+                        "name": "search",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -406,7 +466,7 @@
                         }
                     },
                     {
-                        "name": "arg5",
+                        "name": "type",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -414,7 +474,7 @@
                         }
                     },
                     {
-                        "name": "arg6",
+                        "name": "province",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -422,7 +482,7 @@
                         }
                     },
                     {
-                        "name": "arg7",
+                        "name": "city",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -580,7 +640,7 @@
                 "operationId": "alumniDistribution",
                 "parameters": [
                     {
-                        "name": "arg0",
+                        "name": "groupBy",
                         "in": "query",
                         "description": "Parameter pengelompokan",
                         "required": true,
@@ -622,7 +682,7 @@
                 "operationId": "options",
                 "parameters": [
                     {
-                        "name": "arg0",
+                        "name": "search",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -684,7 +744,7 @@
                 "operationId": "topLocations",
                 "parameters": [
                     {
-                        "name": "arg0",
+                        "name": "limit",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -722,7 +782,7 @@
                 "operationId": "topInstitutions",
                 "parameters": [
                     {
-                        "name": "arg0",
+                        "name": "limit",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -864,7 +924,7 @@
                 "operationId": "getAlumni",
                 "parameters": [
                     {
-                        "name": "arg0",
+                        "name": "page",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -874,7 +934,7 @@
                         }
                     },
                     {
-                        "name": "arg1",
+                        "name": "size",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -884,7 +944,7 @@
                         }
                     },
                     {
-                        "name": "arg2",
+                        "name": "sortBy",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -893,7 +953,7 @@
                         }
                     },
                     {
-                        "name": "arg3",
+                        "name": "sortDirection",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -902,7 +962,7 @@
                         }
                     },
                     {
-                        "name": "arg4",
+                        "name": "angkatan",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -911,7 +971,7 @@
                         }
                     },
                     {
-                        "name": "arg5",
+                        "name": "programStudi",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -919,7 +979,15 @@
                         }
                     },
                     {
-                        "name": "arg6",
+                        "name": "jurusan",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tahunLulus",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -928,7 +996,7 @@
                         }
                     },
                     {
-                        "name": "arg7",
+                        "name": "status",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -936,7 +1004,7 @@
                         }
                     },
                     {
-                        "name": "arg8",
+                        "name": "role",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -944,7 +1012,7 @@
                         }
                     },
                     {
-                        "name": "arg9",
+                        "name": "search",
                         "in": "query",
                         "required": false,
                         "schema": {
@@ -978,7 +1046,17 @@
                 ],
                 "summary": "Menampilkan detail alumni berdasarkan ID",
                 "operationId": "getAlumniDetail",
-                "parameters": [],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -1168,27 +1246,31 @@
                 "type": "object",
                 "properties": {
                     "fullName": {
+                        "type": "string",
                         "maxLength": 150,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "programStudi": {
-                        "pattern": "(?i)^(D1|D3|D4)$",
-                        "type": "string"
+                        "type": "string",
+                        "pattern": "(?i)^(D3|D4)$"
+                    },
+                    "jurusan": {
+                        "type": "string",
+                        "pattern": "(?i)^(D4\\s+komputasi\\s+statistik|D4\\s+statistik|D3\\s+statistik)$"
                     },
                     "tahunLulus": {
                         "type": "integer",
                         "format": "int32"
                     },
                     "phoneNumber": {
+                        "type": "string",
                         "maxLength": 30,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "alamat": {
+                        "type": "string",
                         "maxLength": 255,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     }
                 }
             },
@@ -1232,6 +1314,9 @@
                     "programStudi": {
                         "type": "string"
                     },
+                    "jurusan": {
+                        "type": "string"
+                    },
                     "tahunLulus": {
                         "type": "integer",
                         "format": "int32"
@@ -1273,25 +1358,27 @@
                 }
             },
             "ChangePasswordRequest": {
+                "type": "object",
+                "properties": {
+                    "oldPassword": {
+                        "type": "string",
+                        "minLength": 1
+                    },
+                    "newPassword": {
+                        "type": "string",
+                        "maxLength": 100,
+                        "minLength": 8
+                    },
+                    "confirmNewPassword": {
+                        "type": "string",
+                        "minLength": 1
+                    }
+                },
                 "required": [
                     "confirmNewPassword",
                     "newPassword",
                     "oldPassword"
-                ],
-                "type": "object",
-                "properties": {
-                    "oldPassword": {
-                        "type": "string"
-                    },
-                    "newPassword": {
-                        "maxLength": 100,
-                        "minLength": 8,
-                        "type": "string"
-                    },
-                    "confirmNewPassword": {
-                        "type": "string"
-                    }
-                }
+                ]
             },
             "ApiResponseVoid": {
                 "type": "object",
@@ -1302,9 +1389,7 @@
                     "message": {
                         "type": "string"
                     },
-                    "data": {
-                        "type": "object"
-                    }
+                    "data": {}
                 }
             },
             "InstitutionUpdateRequest": {
@@ -1402,12 +1487,6 @@
                 }
             },
             "WorkHistoryRequest": {
-                "required": [
-                    "employmentType",
-                    "institutionId",
-                    "position",
-                    "startDate"
-                ],
                 "type": "object",
                 "properties": {
                     "institutionId": {
@@ -1415,9 +1494,9 @@
                         "format": "int64"
                     },
                     "position": {
+                        "type": "string",
                         "maxLength": 150,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "employmentType": {
                         "type": "string",
@@ -1437,26 +1516,28 @@
                         "format": "date"
                     },
                     "description": {
+                        "type": "string",
                         "maxLength": 500,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "isCurrentJob": {
                         "type": "boolean"
                     }
-                }
+                },
+                "required": [
+                    "employmentType",
+                    "institutionId",
+                    "position",
+                    "startDate"
+                ]
             },
             "InstitutionRequest": {
-                "required": [
-                    "name",
-                    "type"
-                ],
                 "type": "object",
                 "properties": {
                     "name": {
+                        "type": "string",
                         "maxLength": 150,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "type": {
                         "type": "string",
@@ -1473,94 +1554,107 @@
                         ]
                     },
                     "province": {
+                        "type": "string",
                         "maxLength": 100,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "city": {
+                        "type": "string",
                         "maxLength": 100,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "address": {
+                        "type": "string",
                         "maxLength": 255,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "description": {
+                        "type": "string",
                         "maxLength": 500,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     }
-                }
+                },
+                "required": [
+                    "name",
+                    "type"
+                ]
             },
             "AuthRegisterRequest": {
-                "required": [
-                    "angkatan",
-                    "confirmPassword",
-                    "email",
-                    "fullName",
-                    "nim",
-                    "password",
-                    "programStudi",
-                    "tahunLulus",
-                    "username"
-                ],
                 "type": "object",
                 "properties": {
                     "username": {
+                        "type": "string",
                         "maxLength": 50,
-                        "minLength": 4,
-                        "type": "string"
+                        "minLength": 4
                     },
                     "email": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "email",
+                        "minLength": 1
                     },
                     "password": {
+                        "type": "string",
                         "maxLength": 100,
-                        "minLength": 8,
-                        "type": "string"
+                        "minLength": 8
                     },
                     "confirmPassword": {
+                        "type": "string",
                         "maxLength": 100,
-                        "minLength": 8,
-                        "type": "string"
+                        "minLength": 8
                     },
                     "fullName": {
+                        "type": "string",
                         "maxLength": 150,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "nim": {
+                        "type": "string",
                         "maxLength": 20,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "angkatan": {
-                        "maximum": 67,
-                        "minimum": 1,
                         "type": "integer",
-                        "format": "int32"
+                        "format": "int32",
+                        "maximum": 67,
+                        "minimum": 1
                     },
                     "programStudi": {
-                        "pattern": "(?i)^(D1|D3|D4)$",
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "(?i)^(D3|D4)$"
+                    },
+                    "jurusan": {
+                        "type": "string",
+                        "minLength": 1,
+                        "pattern": "(?i)^(D4\\s+komputasi\\s+statistik|D4\\s+statistik|D3\\s+statistik)$"
                     },
                     "tahunLulus": {
                         "type": "integer",
                         "format": "int32"
                     },
                     "phoneNumber": {
+                        "type": "string",
                         "maxLength": 30,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     },
                     "alamat": {
+                        "type": "string",
                         "maxLength": 255,
-                        "minLength": 0,
-                        "type": "string"
+                        "minLength": 0
                     }
-                }
+                },
+                "required": [
+                    "angkatan",
+                    "confirmPassword",
+                    "email",
+                    "fullName",
+                    "jurusan",
+                    "nim",
+                    "password",
+                    "programStudi",
+                    "tahunLulus",
+                    "username"
+                ]
             },
             "ApiResponseAuthRegisterResponse": {
                 "type": "object",
@@ -1602,6 +1696,9 @@
                     "programStudi": {
                         "type": "string"
                     },
+                    "jurusan": {
+                        "type": "string"
+                    },
                     "tahunLulus": {
                         "type": "integer",
                         "format": "int32"
@@ -1613,19 +1710,21 @@
                 }
             },
             "AuthLoginRequest": {
-                "required": [
-                    "password",
-                    "username"
-                ],
                 "type": "object",
                 "properties": {
                     "username": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                     },
                     "password": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                     }
-                }
+                },
+                "required": [
+                    "password",
+                    "username"
+                ]
             },
             "ApiResponseAuthLoginResponse": {
                 "type": "object",
@@ -2174,6 +2273,12 @@
                         "type": "integer",
                         "format": "int32"
                     },
+                    "programStudi": {
+                        "type": "string"
+                    },
+                    "jurusan": {
+                        "type": "string"
+                    },
                     "status": {
                         "type": "string",
                         "enum": [
@@ -2195,19 +2300,21 @@
                 }
             },
             "AccountDeletionRequest": {
-                "required": [
-                    "confirmation",
-                    "password"
-                ],
                 "type": "object",
                 "properties": {
                     "password": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                     },
                     "confirmation": {
-                        "type": "string"
+                        "type": "string",
+                        "minLength": 1
                     }
-                }
+                },
+                "required": [
+                    "confirmation",
+                    "password"
+                ]
             }
         },
         "securitySchemes": {

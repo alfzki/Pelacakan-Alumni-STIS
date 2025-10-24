@@ -25,7 +25,7 @@ public class OpenApiConfig {
                         .title("API Pelacakan Alumni STIS")
                         .description("REST API untuk mengelola profil alumni, riwayat pekerjaan, serta statistik terkait.")
                         .version("1.0.0")
-                        .contact(new Contact().name("Pelacakan Alumni STIS").email("admin@stis.ac.id")))
+                        .contact(new Contact().name("Pelacakan Alumni STIS").email("222312958@stis.ac.id")))
                 .components(new Components().addSecuritySchemes("bearerAuth", securityScheme))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
     }

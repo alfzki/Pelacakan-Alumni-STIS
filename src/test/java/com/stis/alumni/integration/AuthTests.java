@@ -23,6 +23,7 @@ class AuthTests extends BaseIntegrationTest {
         payload.put("nim", uniqueNim());
         payload.put("angkatan", 62);
         payload.put("programStudi", "D4");
+        payload.put("jurusan", "D4 komputasi statistik");
         payload.put("tahunLulus", 2024);
         payload.put("phoneNumber", "081234567891");
         payload.put("alamat", "Jl. Baru 123");
@@ -34,7 +35,8 @@ class AuthTests extends BaseIntegrationTest {
                 .then()
                 .statusCode(201)
                 .body("status", equalTo("success"))
-                .body("data.username", equalTo(username));
+                .body("data.username", equalTo(username))
+                .body("data.jurusan", equalTo("D4 komputasi statistik"));
     }
 
     @Test

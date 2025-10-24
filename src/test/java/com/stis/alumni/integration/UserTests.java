@@ -24,7 +24,8 @@ class UserTests extends BaseIntegrationTest {
                 .statusCode(200)
                 .body("status", equalTo("success"))
                 .body("data.username", equalTo(regularUser.getUsername()))
-                .body("data.email", equalTo(regularUser.getEmail()));
+                .body("data.email", equalTo(regularUser.getEmail()))
+                .body("data.jurusan", equalTo(regularUser.getJurusan()));
     }
 
     @Test
@@ -32,6 +33,7 @@ class UserTests extends BaseIntegrationTest {
         Map<String, Object> request = new HashMap<>();
         request.put("fullName", "Updated User Name");
         request.put("programStudi", "D4");
+        request.put("jurusan", "D4 statistik");
         request.put("tahunLulus", 2025);
         request.put("phoneNumber", "081200000001");
         request.put("alamat", "Alamat Baru");
@@ -44,11 +46,13 @@ class UserTests extends BaseIntegrationTest {
                 .statusCode(200)
                 .body("status", equalTo("success"))
                 .body("data.fullName", equalTo("Updated User Name"))
-                .body("data.phoneNumber", equalTo("081200000001"));
+                .body("data.phoneNumber", equalTo("081200000001"))
+                .body("data.jurusan", equalTo("D4 statistik"));
 
         User updated = userRepository.findById(regularUser.getId()).orElseThrow();
         assertEquals("Updated User Name", updated.getFullName());
         assertEquals("081200000001", updated.getPhoneNumber());
+        assertEquals("D4 statistik", updated.getJurusan());
     }
 
     @Test

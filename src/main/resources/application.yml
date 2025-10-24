@@ -20,7 +20,7 @@ spring:
 
 app:
   jwt:
-    secret: change-this-secret-key-to-a-secure-value-change-this-secret
+    secret: ${JWT_SECRET:change-this-secret-key-to-a-secure-value}
     expiration-seconds: 86400
 
 springdoc:

@@ -56,6 +56,7 @@ class AlumniTests extends BaseIntegrationTest {
         inactiveUser.setStatus(UserStatus.INACTIVE);
         inactiveUser.setAngkatan(50);
         inactiveUser.setProgramStudi("D3");
+        inactiveUser.setJurusan("D3 statistik");
         inactiveUser.setTahunLulus(2020);
         inactiveUser.setFullName("Filtered Alumni");
         userRepository.save(inactiveUser);
@@ -63,6 +64,7 @@ class AlumniTests extends BaseIntegrationTest {
         givenAuth(adminToken)
                 .queryParam("angkatan", 50)
                 .queryParam("programStudi", "D3")
+                .queryParam("jurusan", "D3 statistik")
                 .queryParam("tahunLulus", 2020)
                 .queryParam("status", "INACTIVE")
                 .queryParam("search", "Filtered")
@@ -73,6 +75,8 @@ class AlumniTests extends BaseIntegrationTest {
                 .body("status", equalTo("success"))
                 .body("data.content", hasSize(1))
                 .body("data.content[0].id", equalTo(inactiveUser.getId().intValue()))
+                .body("data.content[0].programStudi", equalTo("D3"))
+                .body("data.content[0].jurusan", equalTo("D3 statistik"))
                 .body("data.content[0].status", equalTo("INACTIVE"))
                 .body("data.content[0].role", equalTo("USER"));
     }

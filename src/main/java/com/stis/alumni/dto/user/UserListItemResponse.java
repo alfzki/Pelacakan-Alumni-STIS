@@ -13,6 +13,8 @@ public class UserListItemResponse {
     private String fullName;
     private String nim;
     private Integer angkatan;
+    private String programStudi;
+    private String jurusan;
     private UserStatus status;
     private UserRole role;
     private Instant createdAt;
@@ -66,6 +68,22 @@ public class UserListItemResponse {
 
     public void setAngkatan(Integer angkatan) {
         this.angkatan = angkatan;
+    }
+
+    public String getProgramStudi() {
+        return programStudi;
+    }
+
+    public void setProgramStudi(String programStudi) {
+        this.programStudi = programStudi;
+    }
+
+    public String getJurusan() {
+        return jurusan;
+    }
+
+    public void setJurusan(String jurusan) {
+        this.jurusan = jurusan;
     }
 
     public UserStatus getStatus() {

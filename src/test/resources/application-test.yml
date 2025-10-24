@@ -15,5 +15,5 @@ spring:
 
 app:
   jwt:
-    secret: test-secret-key-change-this-should-be-long-and-secure-123456
+    secret: ${JWT_SECRET_TEST:test-secret-key-change-this-should-be-long-and-secure}
     expiration-seconds: 3600

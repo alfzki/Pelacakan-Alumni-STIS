@@ -39,6 +39,10 @@ public final class UserSpecifications {
                 predicates.add(cb.equal(cb.lower(root.get("programStudi")), criteria.getProgramStudi().toLowerCase()));
             }
 
+            if (StringUtils.hasText(criteria.getJurusan())) {
+                predicates.add(cb.equal(cb.lower(root.get("jurusan")), criteria.getJurusan().toLowerCase()));
+            }
+
             if (criteria.getTahunLulus() != null) {
                 predicates.add(cb.equal(root.get("tahunLulus"), criteria.getTahunLulus()));
             }

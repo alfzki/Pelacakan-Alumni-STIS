@@ -51,6 +51,9 @@ public class User extends BaseEntity {
     @Column(name = "program_studi", length = 50)
     private String programStudi;
 
+    @Column(name = "jurusan", length = 100)
+    private String jurusan;
+
     @Column(name = "tahun_lulus")
     private Integer tahunLulus;
 
@@ -136,6 +139,14 @@ public class User extends BaseEntity {
 
     public void setProgramStudi(String programStudi) {
         this.programStudi = programStudi;
+    }
+
+    public String getJurusan() {
+        return jurusan;
+    }
+
+    public void setJurusan(String jurusan) {
+        this.jurusan = jurusan;
     }
 
     public Integer getTahunLulus() {
