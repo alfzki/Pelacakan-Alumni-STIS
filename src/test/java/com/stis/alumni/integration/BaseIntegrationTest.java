@@ -21,6 +21,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.jdbc.Sql;
+import org.testcontainers.containers.MariaDBContainer;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -29,10 +33,33 @@ import java.util.UUID;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Sql(scripts = "classpath:sql/cleanup.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = "classpath:sql/seed_base_data.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = "classpath:sql/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public abstract class BaseIntegrationTest {
 
     protected static final String ADMIN_PASSWORD = "AdminPass123!";
     protected static final String USER_PASSWORD = "UserPass123!";
+
+    private static final MariaDBContainer<?> database = new MariaDBContainer<>("mariadb:11.4")
+            .withDatabaseName("tracking_alumni_test")
+            .withUsername("test_user")
+            .withPassword("test_pass");
+
+    static {
+        database.start();
+    }
+
+    @DynamicPropertySource
+    static void overrideDataSourceProperties(DynamicPropertyRegistry registry) {
+        if (!database.isRunning()) {
+            database.start();
+        }
+        registry.add("spring.datasource.url", database::getJdbcUrl);
+        registry.add("spring.datasource.username", database::getUsername);
+        registry.add("spring.datasource.password", database::getPassword);
+        registry.add("spring.datasource.driver-class-name", database::getDriverClassName);
+    }
 
     @LocalServerPort
     protected int port;
@@ -68,58 +95,27 @@ public abstract class BaseIntegrationTest {
     }
 
     @BeforeEach
-    void resetAndSeedBaseData() {
-        // Ensure each test runs with a clean database snapshot
-        resetData();
-        seedReferenceData();
-    }
+    void loadSeedData() {
+        adminUser = userRepository.findByUsername("admin")
+                .orElseThrow(() -> new IllegalStateException("Seed user 'admin' missing"));
+        regularUser = userRepository.findByUsername("user.one")
+                .orElseThrow(() -> new IllegalStateException("Seed user 'user.one' missing"));
+        secondaryUser = userRepository.findByUsername("user.two")
+                .orElseThrow(() -> new IllegalStateException("Seed user 'user.two' missing"));
 
-    protected void resetData() {
-        workHistoryRepository.deleteAll();
-        institutionRepository.deleteAll();
-        userRepository.deleteAll();
-    }
+        primaryInstitution = institutionRepository.findByNameIgnoreCase("BPS Kota Jakarta")
+                .orElseThrow(() -> new IllegalStateException("Seed institution 'BPS Kota Jakarta' missing"));
+        secondaryInstitution = institutionRepository.findByNameIgnoreCase("Perusahaan Swasta Bandung")
+                .orElseThrow(() -> new IllegalStateException("Seed institution 'Perusahaan Swasta Bandung' missing"));
 
-    private void seedReferenceData() {
-        adminUser = createUser("admin", "admin@example.com", ADMIN_PASSWORD, UserRole.ADMIN, "1000000000001");
-        regularUser = createUser("user.one", "user1@example.com", USER_PASSWORD, UserRole.USER, "1000000000002");
-        secondaryUser = createUser("user.two", "user2@example.com", USER_PASSWORD, UserRole.USER, "1000000000003");
-
-        primaryInstitution = createInstitution(
-                "BPS Kota Jakarta",
-                InstitutionType.BPS_KOTA_KABUPATEN,
-                "DKI Jakarta",
-                "Jakarta",
-                "Jl. Jakarta No. 1"
-        );
-        secondaryInstitution = createInstitution(
-                "Perusahaan Swasta Bandung",
-                InstitutionType.SWASTA,
-                "Jawa Barat",
-                "Bandung",
-                "Jl. Bandung No. 2"
-        );
-
-        regularCurrentWorkHistory = createWorkHistory(
-                regularUser,
-                primaryInstitution,
-                EmploymentType.ASN,
-                "Statistician",
-                LocalDate.of(2020, 1, 1),
-                null,
-                true,
-                "Analyzes statistical data"
-        );
-        secondaryCurrentWorkHistory = createWorkHistory(
-                secondaryUser,
-                secondaryInstitution,
-                EmploymentType.SWASTA,
-                "Data Analyst",
-                LocalDate.of(2021, 5, 1),
-                null,
-                true,
-                "Works on private sector analytics"
-        );
+        regularCurrentWorkHistory = workHistoryRepository.findByUserIdOrderByStartDateDesc(regularUser.getId())
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Seed work history for regular user missing"));
+        secondaryCurrentWorkHistory = workHistoryRepository.findByUserIdOrderByStartDateDesc(secondaryUser.getId())
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Seed work history for secondary user missing"));
 
         adminToken = login(adminUser.getUsername(), ADMIN_PASSWORD);
         userToken = login(regularUser.getUsername(), USER_PASSWORD);
