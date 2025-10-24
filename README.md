@@ -1,6 +1,6 @@
 # API Pelacakan Alumni STIS
 
-Layanan web RESTful untuk mengelola profil alumni STIS, riwayat pekerjaan, institusi, dan statistik dasbor. Layanan ini mengikuti spesifikasi di `Specification.md`, termasuk autentikasi JWT, kontrol akses berbasis peran, dan endpoint CRUD yang lengkap.
+Layanan web RESTful untuk mengelola profil alumni STIS, riwayat pekerjaan, institusi, dan statistik dasbor. Layanan ini memiliki autentikasi JWT, kontrol akses berbasis peran, dan endpoint CRUD yang lengkap.
 
 ## Teknologi
 
@@ -14,7 +14,7 @@ Layanan web RESTful untuk mengelola profil alumni STIS, riwayat pekerjaan, insti
 ## Memulai
 
 1. **Prasyarat**
-   - Java 21
+   - Java 22
    - Maven 3.9+
    - MariaDB 11.x (koneksi bawaan: `jdbc:mariadb://localhost:3306/tracking_alumni`)
 
@@ -42,8 +42,6 @@ Layanan web RESTful untuk mengelola profil alumni STIS, riwayat pekerjaan, insti
 - **Institusi**: `/api/institutions` untuk CRUD (operasi admin) dan `/api/institutions/options` untuk pencarian.
 - **Dasbor & Statistik**: `/api/dashboard/*`, `/api/statistics/*`.
 
-Lihat `Specification.md` untuk skema payload lengkap dan detail perilaku.
-
 ## Pengujian
 
 Jalankan seluruh pengujian:
@@ -60,7 +58,6 @@ mvn test
 - `com.stis.alumni.controller` — controller REST API.
 - `com.stis.alumni.security` — konfigurasi JWT dan Spring Security.
 - `com.stis.alumni.config` — konfigurasi umum termasuk Swagger.
-- `Specification.md` — requirement sistem asli.
 
 ## Catatan
 
