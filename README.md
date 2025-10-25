@@ -50,6 +50,22 @@ Jalankan seluruh pengujian:
 mvn test
 ```
 
+## Skrip Skenario API
+
+- `scenario.sh` — skrip bash yang menjalankan alur lengkap (registrasi alumni → login → kelola profil → kelola riwayat kerja → akses statistik → pembersihan data). Membutuhkan `curl` dan `jq`. Jalankan pada lingkungan Unix-like:
+  ```bash
+  chmod +x scenario.sh
+  BASE_URL=http://localhost:8080 ADMIN_USERNAME=admin ADMIN_PASSWORD=AdminPass123! ./scenario.sh
+  ```
+  Variabel lingkungan `BASE_URL`, `ADMIN_USERNAME`, dan `ADMIN_PASSWORD` opsional; jika kosong, skrip menggunakan nilai baku.
+- `scenario.ps1` — versi PowerShell dengan logika identik, memanfaatkan `Invoke-RestMethod` tanpa dependensi `jq`. Dapat dijalankan di Windows atau perangkat apa pun yang memiliki PowerShell 7:
+  ```powershell
+  pwsh ./scenario.ps1 -BaseUrl http://localhost:8080 -AdminUsername admin -AdminPassword AdminPass123!
+  ```
+  Parameter bersifat opsional; Anda juga dapat menggunakan variabel lingkungan dengan nama yang sama.
+
+Kedua skrip akan membuat data uji sementara dan menutup skenario dengan menghapus riwayat kerja, institusi demo (jika dibuat otomatis), serta menonaktifkan akun alumni percobaan agar basis data tetap bersih.
+
 ## Struktur Proyek
 
 - `com.stis.alumni.entity` — entitas JPA.
